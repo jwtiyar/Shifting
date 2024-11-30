@@ -1,10 +1,12 @@
 import csv
 import datetime as dt
 import datetime
+
 header = ["Fingerprints", "Year", "Month", *range(1,32)]
 Year = int(input("Enter Year: "))
 Month = int(input("Enter Month: "))
 weekDays = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
+
 def main():
     with open('shoft.csv', 'w', newline='') as file:
         add = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar='/')
@@ -48,10 +50,8 @@ def main():
                     elif nameDate == 6:
                         cells[day+2] = 6
 
-                            
             add.writerow(cells)
-
-    
+ 
 if __name__ == "__main__":
     main()
 
