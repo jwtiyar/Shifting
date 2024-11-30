@@ -17,9 +17,12 @@ def main():
                 dayCell1, dayCell2 = 6 , "x"
             else:
                 dayCell1, dayCell2 = "x" , 6
-            for day in range(1,31):
-                if dt.datetime(Year,Month,day).weekday() == friday
+            
+
             cells = [finger,Month , Year, *([dayCell1,dayCell2]*15), dayCell1]
+            for day in range(1,31):
+                if dt.datetime(Year,Month,day).weekday() == 4:
+                    cells[day] = 'x'
             add.writerow(cells)
     
 if __name__ == "__main__":
