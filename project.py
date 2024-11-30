@@ -18,11 +18,6 @@ def main():
         add.writerow(field)
         add.writerows(finger)
     
-def addRow():
-    pass
-    
-def addColumn():
-    pass
 
 if __name__ == "__main__":
     main()
