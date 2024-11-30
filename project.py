@@ -2,11 +2,11 @@ import csv
 import datetime as dt
 import calendar
 
-days = [i for i in range(1,32,1)]
-days = (','.join(map(str,days))).strip()
+
 header = ["Fingerprints", "Year", "Month", *range(1,32)]
-Year = input("Enter Year: ")
-Month = input("Enter Month: ")
+Year = int(input("Enter Year: "))
+Month = int(input("Enter Month: "))
+
 def main():
     with open('shoft.csv', 'w', newline='') as file:
         add = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar='/')
@@ -22,7 +22,8 @@ def main():
             cells = [finger,Month , Year, *([dayCell1,dayCell2]*15), dayCell1]
             for day in range(1,31):
                 if dt.datetime(Year,Month,day).weekday() == 4:
-                    cells[day] = 'x'
+                    cells[day+2] = 'x'
+
             add.writerow(cells)
     
 if __name__ == "__main__":
