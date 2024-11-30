@@ -17,18 +17,38 @@ def main():
                 dayCell1, dayCell2 = "x" , 6
                     
             cells = [finger,Month , Year, *([dayCell1,dayCell2]*15), dayCell1]
-            for day in range(1,31):
+            for day in range(1,31,1):
                 if dt.datetime(Year,Month,day).weekday() == 4:
                     cells[day+2] = 'x'
-                if f >= 2:
-                    nameDate= datetime.date(Year, Month, day).weekday()
-                    print(nameDate)
-                    if nameDate == weekDays[0]:
-                        cells[day+2], cells[day+3] = 'x' , 6
-                    elif nameDate == weekDays[1]:
-                        cells[day+2], cells[day+3] = 6 , 'x'
-                
-            print(weekDays[0])
+                nameDate = datetime.date(Year, Month, day).weekday()
+                if f == 2:
+                    if nameDate == 0 :
+                        cells[day+2] = 6
+                    elif nameDate == 2:
+                        cells[day+2] = 6
+                    elif nameDate == 5:
+                        cells[day+2] = 6
+                    elif nameDate == 3:
+                        cells[day+2] = 'x'
+                    elif nameDate == 1:
+                        cells[day+2] = 'x'
+                    elif nameDate == 6:
+                        cells[day+2] = 'x'
+                elif f == 3:
+                    if nameDate == 0 :
+                        cells[day+2] = 'x'
+                    elif nameDate == 2:
+                        cells[day+2] = 'x'
+                    elif nameDate == 5:
+                        cells[day+2] = 'x'
+                    elif nameDate == 3:
+                        cells[day+2] = 6
+                    elif nameDate == 1:
+                        cells[day+2] = 6
+                    elif nameDate == 6:
+                        cells[day+2] = 6
+
+                            
             add.writerow(cells)
 
     
