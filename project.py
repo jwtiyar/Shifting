@@ -13,6 +13,7 @@ def main():
         add.writerow(header)
         for f in range(4):
             finger = input("input the fingerprints: ")
+            # This Rule will work for first and second Fingerprint which decide to make one of them exist in odd days and other one in even dates all over the month.
             if f % 2:
                 dayCell1, dayCell2 = 6 , "x"
             else:
@@ -20,9 +21,11 @@ def main():
                     
             cells = [finger,Month , Year, *([dayCell1,dayCell2]*15), dayCell1]
             for day in range(1,31,1):
-                if dt.datetime(Year,Month,day).weekday() == 4:
-                    cells[day+2] = 'x'
+                if dt.datetime(Year,Month,day).weekday() == 4: # Changing All fridays to 'X' 
+                    cells[day+2] = 'x' # Because Column 3 starts the day.
                 nameDate = datetime.date(Year, Month, day).weekday()
+                # Below Rule works For third and Fourth Fingerprints which stick them with week days not months number of days either even or odd days.
+                # For example finger print 3 always works in (Sat, Mon, Wed) and 4 will work always in (Sun, Tue, Thu) in The month.
                 if f == 2:
                     if nameDate == 0 :
                         cells[day+2] = 6
