@@ -1,5 +1,0 @@
-import datetime
-weekDays = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
-nameDate= datetime.date(2024,8,2).weekday()
-print(nameDate)
-print(weekDays[nameDate])

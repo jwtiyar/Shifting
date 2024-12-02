@@ -1,10 +1,11 @@
 import csv
 import datetime as dt
 import datetime
-
-header = ["Fingerprints", "Month", "Year", *range(1,32)]
+import pandas as pd
+header = ["code", "month", "year", *range(1,32)]
 Year = int(input("Enter Year: "))
 Month = int(input("Enter Month: "))
+
 weekDays = ("Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday")
 
 def main():
@@ -20,40 +21,50 @@ def main():
                 dayCell1, dayCell2 = "x" , 6
                     
             cells = [finger,Month , Year, *([dayCell1,dayCell2]*15), dayCell1]
-            for day in range(1,31,1):
-                if dt.datetime(Year,Month,day).weekday() == 4: # Changing All fridays to 'X' 
-                    cells[day+2] = 'x' # Because Column 3 starts the day.
-                nameDate = datetime.date(Year, Month, day).weekday()
-                # Below Rule works For third and Fourth Fingerprints which stick them with week days not months number of days either even or odd days.
-                # For example finger print 3 always works in (Sat, Mon, Wed) and 4 will work always in (Sun, Tue, Thu) in The month.
-                if f == 2:
-                    if nameDate == 0 :
-                        cells[day+2] = 6
-                    elif nameDate == 2:
-                        cells[day+2] = 6
-                    elif nameDate == 5:
-                        cells[day+2] = 6
-                    elif nameDate == 3:
-                        cells[day+2] = 'x'
-                    elif nameDate == 1:
-                        cells[day+2] = 'x'
-                    elif nameDate == 6:
-                        cells[day+2] = 'x'
-                elif f == 3:
-                    if nameDate == 0 :
-                        cells[day+2] = 'x'
-                    elif nameDate == 2:
-                        cells[day+2] = 'x'
-                    elif nameDate == 5:
-                        cells[day+2] = 'x'
-                    elif nameDate == 3:
-                        cells[day+2] = 6
-                    elif nameDate == 1:
-                        cells[day+2] = 6
-                    elif nameDate == 6:
-                        cells[day+2] = 6
+            if Month == 2:
+                for day in range(1,29):
+                    
+            else:
+                
+                for day in range(1, 32):
 
-            add.writerow(cells)
+                    if dt.datetime(Year,Month,day).weekday() == 4: # Changing All fridays to 'X' 
+                        cells[day+2] = 'x' # Because Column 3 starts the day.
+                    nameDate = datetime.date(Year, Month, day).weekday()
+                    # Below Rule works For third and Fourth Fingerprints which stick them with week days not months number of days either even or odd days.
+                    # For example finger print 3 always works in (Sat, Mon, Wed) and 4 will work always in (Sun, Tue, Thu) in The month.
+                    if f == 2:
+                        if nameDate == 0 :
+                            cells[day+2] = 6
+                        elif nameDate == 2:
+                            cells[day+2] = 6
+                        elif nameDate == 5:
+                            cells[day+2] = 6
+                        elif nameDate == 3:
+                            cells[day+2] = 'x'
+                        elif nameDate == 1:
+                            cells[day+2] = 'x'
+                        elif nameDate == 6:
+                            cells[day+2] = 'x'
+                    elif f == 3:
+                        if nameDate == 0 :
+                            cells[day+2] = 'x'
+                        elif nameDate == 2:
+                            cells[day+2] = 'x'
+                        elif nameDate == 5:
+                            cells[day+2] = 'x'
+                        elif nameDate == 3:
+                            cells[day+2] = 6
+                        elif nameDate == 1:
+                            cells[day+2] = 6
+                        elif nameDate == 6:
+                            cells[day+2] = 6
+
+                add.writerow(cells)
+        #     print(cells)
+        # file.close()
+        # created = pd.read_csv("shift.csv")
+        
  
 if __name__ == "__main__":
     main()
