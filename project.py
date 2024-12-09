@@ -14,25 +14,28 @@ def fri_Remove(Year,Month,day):
 def day_inWeek(Year, Month, day, f,cells):
     # cells = [None] * 34
     nameDate = datetime.date(Year, Month, day).weekday()
+
     # cells = [0] * 34
     if f == 2:
-        if nameDate == 0:  # Monday
-            cells[day + 2] = 6
-        elif nameDate == 2:  # Wednesday
-            cells[day + 2] = 6
-        elif nameDate == 5:  # Saturday
-            cells[day + 2] = 6
+        if nameDate in [0, 2, 5]:
+            cells[day+2 ] = 'x'
+            if fri_Remove(Year, Month , day):
+                cells[day+2] = 'x' 
+        else:
+            cells[day + 2] = 6 # Mark other days as 'x'
+            if fri_Remove(Year, Month , day):
+                cells[day+2] = 'x' 
+    elif f == 3:
+        if nameDate in [0,2,5]:  # Mon, Wed, Sat
+            cells[day+2] = 6
+            if fri_Remove(Year, Month , day):
+                cells[day+2] = 'x' 
+            
         else:
             cells[day + 2] = 'x' # Mark other days as 'x'
-    elif f == 3:
-        if nameDate == 0:  # Monday
-            cells[day + 2] = 'x'
-        elif nameDate == 2:  # Wednesday
-            cells[day + 2] = 'x'
-        elif nameDate == 5:  # Saturday
-            cells[day + 2] = 'x'
-        else:
-            cells[day + 2] = 6  # Mark other days as 6 (e.g., Sunday, Tuesday, Thursday)
+            if fri_Remove(Year, Month , day):
+                cells[day+2] = 'x' 
+
     
     return cells
  
@@ -54,7 +57,7 @@ def main():
             
             for day in range(1,32):  
                 if fri_Remove(Year, Month , day):
-                    cells[day+2] = 'PUM' 
+                    cells[day+2] = 'x' 
                     print(f)  
                 if f >= 2:
                     day_inWeek(Year, Month, day,f,cells)
