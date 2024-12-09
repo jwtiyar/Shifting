@@ -6,9 +6,10 @@ import calendar
 header = ["code", "month", "year", *range(1,32)]
 
 def fri_Remove(Year,Month,day):
-
-    return dt.datetime(Year,Month,day).weekday() == 4
-             # Changing All fridays to 'X' 
+    try:
+        return dt.datetime(Year, Month, day).weekday() == 4
+    except ValueError:
+        return False  
 
 # Below Rule works For third and Fourth Fingerprints which stick them with week days not months number of days either even or odd days.
 # For example finger print 3 always works in (Sat, Mon, Wed) and 4 will work always in (Sun, Tue, Thu) in The month.
@@ -35,13 +36,13 @@ def day_inWeek(Year, Month, day, f,cells):
             cells[day + 2] = 'x' # Mark other days as 'x'
             if fri_Remove(Year, Month , day):
                 cells[day+2] = 'x' 
-                
+
     return cells
  
 def main():
     Year = int(input("Enter Year: "))
     Month = int(input("Enter Month: "))
-    num_days = calendar.monthrange(Year, Month)[1] # determine number of days two make that code works for months that less that 31 days.
+    # num_days = calendar.monthrange(Year, Month)[1] # determine number of days two make that code works for months that less that 31 days.
 
     with open('shift.csv', 'w', newline='') as file:
         add = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar='/')
@@ -53,13 +54,16 @@ def main():
                 dayCell1, dayCell2 = 6 , "x"
             else:
                 dayCell1, dayCell2 = "x" , 6
-            cells = [finger, Month, Year, *([dayCell1, dayCell2] * (num_days // 2)), dayCell1]
+            cells = [finger, Month, Year, *([dayCell1, dayCell2] * 15), dayCell1]
             
-            for day in range(1,num_days + 1):  
-                if fri_Remove(Year, Month , day):
-                    cells[day+2] = 'x' 
-                if f >= 2:
-                    day_inWeek(Year, Month, day,f,cells)
+            for day in range(1,32):
+                try:  
+                    if fri_Remove(Year, Month , day):
+                        cells[day+2] = 'x' 
+                    if f >= 2:
+                        day_inWeek(Year, Month, day,f,cells)
+                except:
+                    continue
 
             add.writerow(cells)
 
