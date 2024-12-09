@@ -3,7 +3,7 @@ import datetime as dt
 import datetime
 # import calendar
 
-header = ["code", "month", "year", *range(1, 32)]
+header = ["code", "month", "year", *range(1, 32)] # Unpacking 31 days *
 
 
 def fri_Remove(Year, Month, day):
@@ -50,7 +50,7 @@ def main():
     # num_days = calendar.monthrange(Year, Month)[1] # determine number of days two make that code works for months that less that 31 days.
     # you can also use above one to bypass these months that less than 31 days, change cells[] and range(1,32). but I was more confident with try-Except.
     with open("shift.csv", "w", newline="") as file:
-        add = csv.writer(file, quoting=csv.QUOTE_NONE, escapechar="/")
+        add = csv.writer(file)
         add.writerow(header)
         for f in range(4):
             finger = input("input the fingerprints: ").strip()
@@ -59,24 +59,15 @@ def main():
                 dayCell1, dayCell2 = 6, "x"
             else:
                 dayCell1, dayCell2 = "x", 6
-            cells = [
-                finger,
-                Month,
-                Year,
-                *([dayCell1, dayCell2] * 15),
-                dayCell1,
-            ]  # numdays variable can be used here and divided by two.
+                
+            cells = [finger,Month,Year,*([dayCell1, dayCell2] * 15),dayCell1,]  # numdays variable can be used here and divided by two.
 
             for day in range(1, 32):
                 try:
                     if fri_Remove(Year, Month, day):
-                        cells[
-                            day + 2
-                        ] = "x"  # Used +2 because 0,1,2 column is reserved for code,month,year.
+                        cells[day + 2] = "x"  # Used +2 because 0,1,2 column is reserved for code,month,year.
                     if f >= 2:
-                        day_inWeek(
-                            Year, Month, day, f, cells
-                        )  # Cells used as argument to the function because we want it to be available in inWeek func. otherwise gives error.
+                        day_inWeek(Year, Month, day, f, cells)  # Cells used as argument to the function because we want it to be available in inWeek func. otherwise gives error.
                 except:
                     continue  # continue do the work even the month is less than 31 days.
 
