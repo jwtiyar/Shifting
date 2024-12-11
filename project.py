@@ -72,6 +72,7 @@ def main():
                     continue  # continue do the work even the month is less than 31 days.
 
             add.writerow(cells)
+    print("CSV shift File Succefully created")
 
     return cells, finger
 
