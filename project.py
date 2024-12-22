@@ -3,6 +3,8 @@ import datetime as dt
 import datetime
 # import calendar
 
+
+print("First and Second Fingerprint is For Oil Lab Employees, Third and Fourth for Sample man's")
 header = ["code", "month", "year", *range(1, 32)] # Unpacking 31 days *
 
 
