@@ -24,8 +24,8 @@ sudo chmod +x shift-gui.py
 
 ### Windows
 
-- **Double-click on** `shify-gui.py` to run the script.
-
+```bash
+python shift-gui.py
+```
 ---
 
-Enjoy using the script!
