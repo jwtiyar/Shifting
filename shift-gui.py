@@ -15,7 +15,7 @@ class ShiftGeneratorGUI:
             "Shakar Rauf": "C875",
             "Omed Salih": "C927",
             "Osman Arif": "C130",
-            "Siamand Dilshad": "C795",
+            "Siamand Dilshad": "C796",
             "Wrya Abdullah": "C930"
         }
 
