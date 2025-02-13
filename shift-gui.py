@@ -95,6 +95,7 @@ class ShiftGeneratorGUI:
                     add.writerow(cells)
             
             messagebox.showinfo("Success", "CSV shift file successfully created!")
+            self.root.destroy()
         
         except ValueError as e:
             messagebox.showerror("Error", str(e))
