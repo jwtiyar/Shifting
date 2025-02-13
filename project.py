@@ -7,7 +7,7 @@ print("""
 Shakar Rauf : C875
 Omed Salih: C927
 Osman Arif: C130
-Siamand Dilshad : C795
+Siamand Dilshad : C796
 Wrya Abdullah: C930
 """)
 print("First and Second Fingerprint is For Oil Lab Employees, Third and Fourth for Sample man's")
