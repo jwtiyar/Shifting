@@ -15,7 +15,7 @@ class ShiftGeneratorGUI:
             "Shakar Rauf": "C875",
             "Omed Salih": "C927",
             "Osman Arif": "C130",
-            "Siamand Dilshad": "C796",
+            "Siamand Dilshad": "C795",
             "Wrya Abdullah": "C930"
         }
 
@@ -58,6 +58,10 @@ class ShiftGeneratorGUI:
         self.generate_btn = ttk.Button(self.root, text="Generate Shifts", command=self.generate_shifts)
         self.generate_btn.grid(row=6, column=0, columnspan=2, pady=10)
 
+        # Copyright button
+        self.copyright_btn = ttk.Button(self.root, text="© 2025 Jwtyar Nariman", command=self.open_github)
+        self.copyright_btn.grid(row=7, column=0, columnspan=2, pady=10)
+
         # Configure grid weights for responsive layout
         self.root.grid_columnconfigure(1, weight=1)
 
@@ -95,13 +99,18 @@ class ShiftGeneratorGUI:
                     add.writerow(cells)
             
             messagebox.showinfo("Success", "CSV shift file successfully created!")
-            self.root.destroy()
+            
+            
         
         except ValueError as e:
             messagebox.showerror("Error", str(e))
     
     def get_fingerprint(self, f):
         return list(self.employees.values())[f]
+
+    def open_github(self):
+        import webbrowser
+        webbrowser.open("https://github.com/jwtiyar")
 
 def fri_Remove(Year, Month, day):
     try:
