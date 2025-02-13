@@ -9,6 +9,7 @@ from project import fri_Remove, day_inWeek
 class TestProjectFunctions(unittest.TestCase):
 
 
+    def test_fri_Remove(self):
         # Test for a known Friday
         self.assertTrue(fri_Remove(2023, 10, 6))  # October 6, 2023 is a Friday
         # Test for a known non-Friday
