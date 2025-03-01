@@ -76,7 +76,7 @@ def main():
                         cells[day + 2] = "x"  # Used +2 because 0,1,2 column is reserved for code,month,year.
                     if f >= 2:
                         day_inweek(Year, Month, day, f, cells)  # Cells used as argument to the function because we want it to be available in inWeek func. otherwise gives error.
-                except:
+                except ValueError:
                     continue  # continue do the work even the month is less than 31 days.
 
             add.writerow(cells)
