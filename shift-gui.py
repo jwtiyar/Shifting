@@ -86,7 +86,7 @@ class ShiftGeneratorGUI:
                     else:
                         day_cell_1, day_cell_2 = "x", 6
                     
-                    cells = [finger, Month, Year, *([day_cell_1, day_cell_2] * 15), day_cell_1]  # numdays variable can be used here and divided by two.
+                    cells = [finger, month, year, *([day_cell_1, day_cell_2] * 15), day_cell_1]  # numdays variable can be used here and divided by two.
                                         
                     for day in range(1, 32):
                         try:
