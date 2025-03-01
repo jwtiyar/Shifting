@@ -68,7 +68,7 @@ def main():
             else:
                 day_Cell_1, day_Cell_2 = "x", 6
                 
-            cells = [finger,Month,Year,*([dayCell1, dayCell2] * 15),dayCell1,]  # numdays variable can be used here and divided by two.
+            cells = [finger,Month,Year,*([day_Cell_1, day_Cell_2] * 15),day_Cell_1,]  # numdays variable can be used here and divided by two.
 
             for day in range(1, 32):
                 try:
