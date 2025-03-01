@@ -1,4 +1,4 @@
-from project import fri_Remove, day_inWeek
+from project import fri_Remove, day_inweek
 
 def test_fri_Remove():
     # Test for a known Friday
@@ -11,14 +11,14 @@ def test_fri_Remove():
 def test_day_inWeek():
     cells = ["code", 10, 2023] + [0] * 31
     # Test for fingerprint 2 on a Monday
-    result = day_inWeek(2023, 10, 2, 2, cells.copy())  # October 2, 2023 is a Monday
+    result = day_inweek(2023, 10, 2, 2, cells.copy())  # October 2, 2023 is a Monday
     assert result[4] == "x"
     # Test for fingerprint 3 on a Tuesday
-    result = day_inWeek(2023, 10, 3, 3, cells.copy())  # October 3, 2023 is a Tuesday
+    result = day_inweek(2023, 10, 3, 3, cells.copy())  # October 3, 2023 is a Tuesday
     assert result[5] == "x"
     # Test for fingerprint 2 on a Friday
-    result = day_inWeek(2023, 10, 6, 2, cells.copy())  # October 6, 2023 is a Friday
+    result = day_inweek(2023, 10, 6, 2, cells.copy())  # October 6, 2023 is a Friday
     assert result[8] == "x"
     # Test for fingerprint 3 on a Friday
-    result = day_inWeek(2023, 10, 6, 3, cells.copy())  # October 6, 2023 is also a Friday
+    result = day_inweek(2023, 10, 6, 3, cells.copy())  # October 6, 2023 is also a Friday
     assert result[8] == "x"
