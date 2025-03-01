@@ -28,7 +28,7 @@ def fri_Remove(Year, Month, day):
 # numbers of week starts from 0 to 6 in otherword Monday is 0 and Tuesday is 1 ..etc.
 # As you can see below we didn't used number 4 because it's Friday and we already have function for it.
 # Friday remover should be mentioned again to mark fridays and change their value to 'x if its Friday.
-def day_inWeek(Year, Month, day, f, cells):
+def day_inweek(Year, Month, day, f, cells):
     nameDate = datetime.date(Year, Month, day).weekday()
     if f == 2:
         if nameDate in [0, 2, 5]:
@@ -64,9 +64,9 @@ def main():
             finger = input("input the fingerprints: ").strip()
             # This Rule will work for first and second Fingerprint which decide to make one of them exist in odd days and other one in even dates all over the month.
             if f % 2:
-                dayCell1, dayCell2 = 6, "x"
+                day_Cell_1, dayCell2 = 6, "x"
             else:
-                dayCell1, dayCell2 = "x", 6
+                day_Cell_1, day_Cell_2 = "x", 6
                 
             cells = [finger,Month,Year,*([dayCell1, dayCell2] * 15),dayCell1,]  # numdays variable can be used here and divided by two.
 
@@ -75,7 +75,7 @@ def main():
                     if fri_Remove(Year, Month, day):
                         cells[day + 2] = "x"  # Used +2 because 0,1,2 column is reserved for code,month,year.
                     if f >= 2:
-                        day_inWeek(Year, Month, day, f, cells)  # Cells used as argument to the function because we want it to be available in inWeek func. otherwise gives error.
+                        day_inweek(Year, Month, day, f, cells)  # Cells used as argument to the function because we want it to be available in inWeek func. otherwise gives error.
                 except:
                     continue  # continue do the work even the month is less than 31 days.
 
