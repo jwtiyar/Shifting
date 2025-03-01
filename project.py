@@ -22,12 +22,13 @@ def fri_Remove(Year, Month, day):
     except ValueError:
         return False
 
-
+"""
 # Below Rule works For third and Fourth Fingerprints which stick them with week days not months number of days either even or odd days.
 # For example finger print 3 always works in (Sat, Mon, Wed) and 4 will work always in (Sun, Tue, Thu) in The month.
 # numbers of week starts from 0 to 6 in otherword Monday is 0 and Tuesday is 1 ..etc.
 # As you can see below we didn't used number 4 because it's Friday and we already have function for it.
 # Friday remover should be mentioned again to mark fridays and change their value to 'x if its Friday.
+"""
 def day_inweek(Year, Month, day, f, cells):
     nameDate = datetime.date(Year, Month, day).weekday()
     if f == 2:
