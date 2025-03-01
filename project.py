@@ -64,7 +64,7 @@ def main():
             finger = input("input the fingerprints: ").strip()
             # This Rule will work for first and second Fingerprint which decide to make one of them exist in odd days and other one in even dates all over the month.
             if f % 2:
-                day_Cell_1, dayCell2 = 6, "x"
+                day_Cell_1, day_Cell_2 = 6, "x"
             else:
                 day_Cell_1, day_Cell_2 = "x", 6
                 
