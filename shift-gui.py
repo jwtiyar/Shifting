@@ -80,20 +80,21 @@ class ShiftGeneratorGUI:
                         raise ValueError(f"Invalid fingerprint: {fingerprint_name}")
                     finger = self.employees[fingerprint_name]
                     
+                    # Change day_Cell_1 and day_Cell_2 to day_cell_1 and day_cell_2
                     if f % 2:
-                        dayCell1, dayCell2 = 6, "x"
+                        day_cell_1, day_cell_2 = 6, "x"
                     else:
-                        dayCell1, dayCell2 = "x", 6
+                        day_cell_1, day_cell_2 = "x", 6
                     
-                    cells = [finger, month, year, *([dayCell1, dayCell2] * 15), dayCell1]
-                    
+                    cells = [finger, Month, Year, *([day_cell_1, day_cell_2] * 15), day_cell_1]  # numdays variable can be used here and divided by two.
+                                        
                     for day in range(1, 32):
                         try:
                             if fri_Remove(year, month, day):
                                 cells[day + 2] = "x"
                             if f >= 2:
                                 day_inWeek(year, month, day, f, cells)
-                        except:
+                        except ValueError:
                             continue
                     
                     add.writerow(cells)
